@@ -1,0 +1,24 @@
+﻿@model Guess
+<h2>Guess 3</h2>
+<br />
+
+<h3>GUESS1 - @Model.Guess1</h3>
+<h3>GUESS1 - @Model.Guess1Attempt</h3>
+<h3>GUESS2 - @Model.Guess2</h3>
+<h3>GUESS2 - @Model.Guess2Attempt</h3>
+
+<br />
+<div class="text-center">
+	Guess 2
+	<form action="/Home/GuessThree" method="post">
+		@Html.TextBoxFor(m => m.Guess3)
+		@Html.HiddenFor(m => m.ChosenWord)
+		@Html.HiddenFor(m => m.Guess1)
+		@Html.HiddenFor(m => m.Guess1Attempt)
+		@Html.HiddenFor(m => m.Guess2)
+		@Html.HiddenFor(m => m.Guess2Attempt)
+		<input type="submit" value="Submit" />
+		@Model.Error
+	</form>
+
+</div>

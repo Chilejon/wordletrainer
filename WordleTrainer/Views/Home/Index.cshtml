@@ -1,0 +1,18 @@
+﻿@model Guess
+
+<div class="text-center">
+
+	Guess 1
+	<br />
+	<form action="/Home/Index" method="post">
+		@Html.TextBoxFor(m => m.Guess1, new { @maxlength = "5" })
+		@Html.HiddenFor(m => m.ChosenWord)
+		<input type="submit" value="Submit" />
+		@Model.Error
+	</form>
+
+
+
+	@Model.ChosenWord
+
+</div>
