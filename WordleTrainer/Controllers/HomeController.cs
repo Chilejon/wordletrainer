@@ -25,10 +25,11 @@ namespace WordleTrainer.Controllers
 			Console.WriteLine(words.Length);
 			Random rnd = new Random();
 			int rndIndex = rnd.Next(1, words.Length);
-			Console.WriteLine(words[rndIndex]);
+			//Console.WriteLine(words[rndIndex]);
 
 			Guess model = new Guess();
 			model.ChosenWord = words[rndIndex].Trim().ToUpper();
+			//model.ChosenWord = "LARGE";
 			model.Error = ".";
 			return View(model);
 		}
@@ -79,9 +80,44 @@ namespace WordleTrainer.Controllers
 				}
 				else
 				{
-					attempt += "B";
-					model.DeadLetters += guess[i] + " ";
-				}
+					string tempAttempt = string.Empty;
+					if (guess[i] == chosenWord[0] && i != 0)
+					{
+						tempAttempt = "O";
+					}
+					if (guess[i] == chosenWord[1] && i != 1)
+					{
+						tempAttempt = "O";
+					}
+					if (guess[i] == chosenWord[2] && i != 2)
+					{
+						tempAttempt = "O";
+					}
+					if (guess[i] == chosenWord[3] && i != 3)
+					{
+						tempAttempt = "O";
+					}
+					if (guess[i] == chosenWord[4] && i != 4)
+					{
+						tempAttempt = "O";
+					}
+
+					if (string.IsNullOrEmpty(tempAttempt))
+					{
+						attempt += "B";
+						model.DeadLetters += guess[i] + " ";
+					}
+					else
+					{
+						attempt += tempAttempt;
+					}
+					}
+
+
+
+
+
+			
 			}
 
 			return attempt;
